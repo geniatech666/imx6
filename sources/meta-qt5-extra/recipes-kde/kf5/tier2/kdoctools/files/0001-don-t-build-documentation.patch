@@ -1,0 +1,35 @@
+From 760e76e826f935c72b4874f104773c954def532e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Andreas=20M=C3=BCller?= <schnitzeltony@googlemail.com>
+Date: Fri, 28 Nov 2014 12:21:41 +0100
+Subject: [PATCH 4/4] don't build documentation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Inappropriate [configuration]
+
+Signed-off-by: Andreas Müller <schnitzeltony@googlemail.com>
+---
+ CMakeLists.txt | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5927437..2e49d39 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -91,12 +91,7 @@ set(KDOCTOOLS_LANGUAGES_LIST af bg ca cs da de el en-GB en eo es et fi fo fr gl
+ 
+ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5DocTools")
+ add_definitions(-DTRANSLATION_DOMAIN=\"kdoctools5\")
+-if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po" AND KF5I18n_FOUND)
+-    ki18n_install(po)
+-    kdoctools_install(po)
+-endif()
+ add_subdirectory(common)
+-add_subdirectory(docs)
+ add_subdirectory(src)
+ if (BUILD_TESTING)
+     add_subdirectory(autotests)
+-- 
+2.14.4
+
