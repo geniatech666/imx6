@@ -1,0 +1,17 @@
+uuu_version 1.0.1
+
+SDP: boot -f u-boot-imx6ull14x14evk.imx
+# This command will be run when use SPL
+SDPU: delay 1000
+SDPU: write -f u-boot-imx6ull14x14evk.imx -offset 0x57c00
+SDPU: jump
+# This command will be run when ROM support stream mode
+SDPS: boot -f u-boot-imx6ull14x14evk.imx
+
+FB: ucmd setenv fastboot_dev mmc
+FB: ucmd setenv mmcdev ${emmc_dev}
+FB: ucmd mmc dev ${emmc_dev}
+FB: flash -raw2sparse all fsl-image-qt5-validation-imx-imx6ull14x14evk.sdcard
+FB: flash bootloader u-boot-imx6ull14x14evk.imx
+FB: ucmd mmc partconf ${emmc_dev} 0 1 0
+FB: done
